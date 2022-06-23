@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/jackc/pgx/v4 v4.16.1
 	github.com/n-r-w/lg v1.0.0
-	github.com/n-r-w/nerr v1.0.0
+	github.com/n-r-w/nerr v1.0.1
 )
 
 require (
