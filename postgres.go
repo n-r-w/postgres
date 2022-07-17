@@ -19,7 +19,7 @@ const (
 	defaultReconnectTimeout   = time.Second
 )
 
-type Postgres struct {
+type Service struct {
 	maxConns           int
 	connAttempts       int
 	maxMaxConnIdleTime time.Duration
@@ -33,8 +33,8 @@ type Postgres struct {
 // Url - алиас для корректной работы google wire
 type Url string
 
-func New(url Url, logger lg.Logger, options ...Option) (*Postgres, error) {
-	pg := &Postgres{
+func New(url Url, logger lg.Logger, options ...Option) (*Service, error) {
+	pg := &Service{
 		maxConns:           defaultMaxConns,
 		connAttempts:       defaultConnAttempts,
 		maxMaxConnIdleTime: defaultMaxMaxConnIdleTime,
@@ -79,7 +79,7 @@ func New(url Url, logger lg.Logger, options ...Option) (*Postgres, error) {
 	return pg, nil
 }
 
-func (p *Postgres) Close() {
+func (p *Service) Close() {
 	if p.Pool != nil {
 		p.Pool.Close()
 	}
